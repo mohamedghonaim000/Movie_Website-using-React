@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
 
-export default function NavBar() {
+export default function NavBar({onSearch}) {
   const routes = [
     { path: "/", name: "Home" },
     { path: "/movies", name: "Movies" },
     { path: "/tvSeries", name: "Tv Series" },
     { path: "/contactUs", name: "Contact us" },
   ];
-
   return (
     <div className="navbar bg-base-100 shadow-sm px-4">
       <div className="flex-1 flex items-center gap-6 container">
@@ -28,6 +27,7 @@ export default function NavBar() {
       <div className="flex gap-2 items-center">
         <input
           type="text"
+          onChange={(e)=>{onSearch(e.target.value)}}
           placeholder="Search"
           className="input input-bordered w-24 md:w-auto"
         />

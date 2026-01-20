@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { getAllMovies } from "../../Services/movies";
+import { getAllMovies, getMoviebySearch } from "../../Services/movies";
 import Card from "../../Components/Card";
+import { useOutletContext } from "react-router";
 
 export default function Movies() {
     const [page , setPage] = useState(1)
     const [movies , setMovies]=useState([])
+    const {query}= useOutletContext()
 
-        useEffect(()=>{
-            getAllMovies(page).then(res=>setMovies(res.data.results))
-        }, [page])
+    
+
+useEffect(() => {
+  if (query.trim()) {
+    getMoviebySearch(query).then((res) => setMovies(res.data.results));
+  } else {
+    getAllMovies(page).then((res) => setMovies(res.data.results));
+  }
+}, [query, page]);
 
   return (
     <>
