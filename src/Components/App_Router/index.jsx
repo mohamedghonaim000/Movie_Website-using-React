@@ -6,6 +6,7 @@ import Movies from './../../Pages/Movies/index';
 import TvSeries from '../../Pages/Tv_Series';
 import Notfound from '../../Pages/Notfound';
 import ContactUs from '../../Pages/Contact_us';
+import MovieDetails from '../../Pages/Movies/Movie_Details';
 const routes = createBrowserRouter(
     [
         {
@@ -14,6 +15,7 @@ const routes = createBrowserRouter(
             children:[
                 {path:'/' , element:<Home/>},
                 {path:'/movies' , element:<Movies/>},
+                {path:'/movieDetails/:id' , element:<MovieDetails/>},
                 {path:'/tvSeries' , element:<TvSeries/>},
                 {path:'/contactUs' , element:<ContactUs/>},
 

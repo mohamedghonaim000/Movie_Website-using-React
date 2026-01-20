@@ -8,3 +8,7 @@ export function getAllMovies(index){
     }
     )
 }
+
+export function getMovieDtails(id){
+    return axiosInstance.get(`/movie/${id}`)
+}
