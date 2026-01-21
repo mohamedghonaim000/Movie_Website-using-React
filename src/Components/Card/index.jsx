@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import { addItem, removeItem } from "../../Store/Slices";
+import { useDispatch } from "react-redux";
+import { FaTrashCan } from "react-icons/fa6";
 
-export default function Card({ data }) {
+export default function Card({ data , favoritFromfavoritComponent }) {
   const navigate = useNavigate();
 
   const handleNavigatonToMoveiDetails = (id) => {
     navigate(`/movieDetails/${id}`);
   };
+
+  const [isClicked , setIsclicked]=useState(false)
+  
+
+  const dispatch = useDispatch()
+
+  const addTofavourit = (item)=>{
+    dispatch(addItem(item))
+  }
+
+  const removeFromfavourit = (id)=>{
+    dispatch(removeItem(id))
+  }
+ 
 
   return (
     <div 
@@ -19,6 +37,35 @@ export default function Card({ data }) {
           alt={data.title}
           className="group-hover:scale-110 transition-transform duration-500 object-cover w-full h-full"
         />
+        <button 
+          className="absolute top-2 left-2 z-10 p-1.5 rounded-full bg-black/40 backdrop-blur-sm transition-all duration-300 hover:scale-125"
+        >
+        {!favoritFromfavoritComponent?(
+           <FaStar 
+          onClick={(e)=>{
+            e.stopPropagation()
+            if(!isClicked){
+              addTofavourit(data)
+            }else{
+              removeFromfavourit(data.id)
+            }
+             setIsclicked(!isClicked)
+            }}
+            size={18} 
+             className={`transition-colors duration-300 ${isClicked ? "text-(--primary-color)" : "text-white"}`}
+          />
+        ):(
+          <FaTrashCan
+             onClick={(e)=>{
+            e.stopPropagation()
+            removeFromfavourit(data.id)
+            }}
+            size={18} 
+             className="transition-colors duration-300 text-red-700" 
+          />
+        )}
+         
+        </button>
         <div className="absolute top-2 right-2">
           {data.adult ? (
             <div className="badge badge-secondary badge-sm font-bold">18+</div>

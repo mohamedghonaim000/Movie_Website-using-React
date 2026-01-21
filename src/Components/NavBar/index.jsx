@@ -6,7 +6,9 @@ export default function NavBar({ onSearch }) {
     { path: "/", name: "Home" },
     { path: "/movies", name: "Movies" },
     { path: "/tvSeries", name: "Tv Series" },
+    {path:'/favorit',name:"Favorits"},
     { path: "/contactUs", name: "Contact us" },
+    
   ];
 
   return (
