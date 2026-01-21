@@ -40,14 +40,14 @@ export default function MovieDetails() {
                                 {movieDetail.title}
                             </h1>
                             {movieDetail.status && (
-                                <div className="badge badge-primary badge-outline font-bold p-3">
+                                <div className="badge badge-(--primary-color) badge-outline font-bold p-3">
                                     {movieDetail.status}
                                 </div>
                             )}
                         </div>
 
                         {movieDetail.tagline && (
-                            <p className="text-xl italic text-primary font-medium mb-6">
+                            <p className="text-xl italic text-(--primary-color) font-medium mb-6">
                                 "{movieDetail.tagline}"
                             </p>
                         )}

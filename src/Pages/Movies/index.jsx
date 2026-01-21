@@ -21,20 +21,20 @@ useEffect(() => {
   return (
     <>
       <div className="container mx-auto px-4 py-8">
-  <div className="grid gap-4 md:grid-cols-3">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     {movies.map((movie) => (
       <Card data={movie} key={movie.id} />
     ))}
   </div>
   <div className="btns flex justify-around my-4">
 <button
-    className="btn bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+    className="btn bg-(--primary-color) disabled:bg-gray-400 disabled:cursor-not-allowed"
     onClick={()=>setPage(prev=>prev-1)}
     disabled={page <= 1} 
   >
     Prev
   </button>   
-   <button className="btn bg-amber-600 " onClick={()=>setPage(next=>next+1)}>Next</button>
+   <button className="btn bg-(--primary-color) " onClick={()=>setPage(next=>next+1)}>Next</button>
 
   </div>
 </div>

@@ -6,3 +6,7 @@
   width: 85%;
   margin: auto;
 }
+
+:root {
+  --primary-color: #d97706; 
+}
