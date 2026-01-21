@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router";
-import { addItem, removeItem } from "../../Store/Slices";
+import { addItem, removeItem } from "../../Store/Slices/favorit";
 import { useDispatch } from "react-redux";
 import { FaTrashCan } from "react-icons/fa6";
 import { toast, ToastContainer } from "react-toastify";

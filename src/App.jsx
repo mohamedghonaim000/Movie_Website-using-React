@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import "./App.css";
 import AppRouter from "./Components/App_Router";
-import store from './Store/index';
+import store from './Store/store';
 import { ToastContainer } from "react-toastify";
 
 function App() {
