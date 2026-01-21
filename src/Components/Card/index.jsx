@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { addItem, removeItem } from "../../Store/Slices";
 import { useDispatch } from "react-redux";
 import { FaTrashCan } from "react-icons/fa6";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Card({ data , favoritFromfavoritComponent }) {
   const navigate = useNavigate();
@@ -24,6 +25,8 @@ export default function Card({ data , favoritFromfavoritComponent }) {
   const removeFromfavourit = (id)=>{
     dispatch(removeItem(id))
   }
+
+
  
 
   return (
@@ -46,8 +49,11 @@ export default function Card({ data , favoritFromfavoritComponent }) {
             e.stopPropagation()
             if(!isClicked){
               addTofavourit(data)
+              toast.success(`${data.title} Added To Favorits`)
             }else{
               removeFromfavourit(data.id)
+              toast.error(`${data.title} Removed From Favorits`)
+
             }
              setIsclicked(!isClicked)
             }}
