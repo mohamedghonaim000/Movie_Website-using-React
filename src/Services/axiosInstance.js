@@ -11,8 +11,7 @@ import { changeLoader } from "../Store/Slices/loader";
 
 axiosInstance.interceptors.request.use((req)=>{
   if(req.url!='login'&&req.url!='register'){
-    console.log("hiiiiiiiiii from request");git add .
-git commit -m "Add loader state in Redux and setup Axios interceptors"
+    console.log("hiiiiiiiiii from request");
   }
    store.dispatch(changeLoader(true))
    return req
