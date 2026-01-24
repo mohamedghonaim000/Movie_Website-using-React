@@ -10,7 +10,7 @@ export default function Favorit() {
         <h1 className='text-(--primary-color) my-5'>Your Favorits:</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {favoritArr.map((movie) => (
-          <Card data={movie} key={movie.id} favoritFromfavoritComponent={true/false}/>
+          <Card data={movie} key={movie.id} favoritFromfavoritComponent={true}/>
         ))}
       </div>
     </div>
