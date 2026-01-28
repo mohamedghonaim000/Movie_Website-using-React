@@ -1,21 +1,33 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
 export default function NavBar({ onSearch }) {
+
+  const { t , i18n} = useTranslation();
+
   const routes = [
-    { path: "/", name: "Home" },
-    { path: "/movies", name: "Movies" },
-    { path: "/tvSeries", name: "Tv Series" },
-    {path:'/favorit',name:"Favorits"},
-    { path: "/contactUs", name: "Contact us" },
-    
+    { path: "/", name: t("home") },
+    { path: "/movies", name: t("movies") },
+    { path: "/tvSeries", name: t("series") },
+    { path: "/favorit", name: t("favorits") },
+    { path: "/contactUs", name: t("contact") },
   ];
+
+  const changeLanguagee = () => {
+    const lang = localStorage.getItem("lang") == "en" ? "ar" : "en";
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+    document.documentElement.dir = lang == "en" ? "ltr" : "rtl";
+  };
 
   return (
     <div className="navbar bg-base-100/80 backdrop-blur-md sticky top-0 z-50 border-b border-base-200 px-4 md:px-8">
       <div className="navbar-start">
-        <Link to="/" className="text-2xl font-black tracking-tighter text-(--primary-color)hover:opacity-80 transition-opacity">
-          MOVIES<span className="text-(--primary-color)">.</span>
+        <Link
+          to="/"
+          className="text-2xl font-black tracking-tighter text-(--primary-color)hover:opacity-80 transition-opacity"
+        >
+         {t('logo')}<span className="text-(--primary-color)">.</span>
         </Link>
       </div>
 
@@ -23,8 +35,8 @@ export default function NavBar({ onSearch }) {
         <ul className="menu menu-horizontal p-0 gap-2">
           {routes.map((route) => (
             <li key={route.name}>
-              <Link 
-                to={route.path} 
+              <Link
+                to={route.path}
                 className="text-sm font-medium hover:text-(--primary-color) hover:bg-transparent transition-colors duration-200"
               >
                 {route.name}
@@ -71,9 +83,23 @@ export default function NavBar({ onSearch }) {
                 <span className="badge badge-primary badge-xs py-2">New</span>
               </Link>
             </li>
-            <li><a>Settings</a></li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <button
+                className="btn"
+                onClick={() => {
+                  changeLanguagee();
+                }}
+              >
+                En
+              </button>
+            </li>
             <div className="divider my-1"></div>
-            <li><a className="text-error">Logout</a></li>
+            <li>
+              <a className="text-error">Logout</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Card from "../../Components/Card";
 import { useOutletContext } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { movieAction, searchMovieaction } from "../../Store/Slices/movies";
+
 import Loading from "../Loading";
+import useFetchmovies from "../../Hooks/UseFetch";
 
 export default function Movies() {
+  
   const [page, setPage] = useState(1);
   const { query } = useOutletContext();
 
-  const { movies, loading, error } = useSelector((state) => state.movies);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(movieAction(page));
-  }, [page, dispatch]);
-
-  useEffect(() => {
-    if (query && query.trim()) {
-      dispatch(searchMovieaction(query));
-    }
-  }, [query, dispatch]);
+  const {movies , loading , error}=useFetchmovies(page , query)
 
   if (loading) {
     return <Loading />;
